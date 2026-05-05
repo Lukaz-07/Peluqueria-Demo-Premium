@@ -3,54 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Premium | Turnos</title>
+    <title>Barbería Demo - Premium Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="peek-container">
-        <header>
-            <div class="brand-box">
-                <h1>HAIR STUDIO</h1>
-                <p class="brand-sub">DESIGN & PRECISION</p>
+        
+        <header class="hero-section">
+            <div class="hero-top">
+                <div class="brand-box">
+                    <span class="brand-title">BARBERÍA DEMO</span>
+                    <span class="brand-sub">ESTUDIO PREMIUM / TOKIO ESTILO</span>
+                </div>
+                <div class="date-box">
+                    <span class="date-month" id="current-month">MAYO</span>
+                    <span class="date-day" id="current-day">05</span>
+                    <span class="date-time" id="current-time">17:33:40</span>
+                </div>
+            </div>
+
+            <div class="hero-bottom">
+                <span class="collection-tag">PEEK-A-BOO COLLECTION 2026 S/S</span>
+                <h1 class="hero-main-title">Killing me softly...</h1>
+                <button type="button" class="btn-trigger" id="btn-toggle-gallery">
+                    Cortes de Pelo <i class="fa-solid fa-chevron-down"></i>
+                </button>
             </div>
         </header>
 
-        <section class="section-peek">
-            <h2 class="section-title">STYLE BOOK</h2>
-            <div class="gallery-layout">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&q=80" alt="Estilo 1">
+        <section class="gallery-section hidden" id="gallery-target">
+            <h2 class="section-label">STYLE BOOK 2026 / GALERÍA</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Corte Moderno">
+                    </div>
+                    <p class="item-desc">MODERN WOLF CUT <span>/ DESIGN</span></p>
                 </div>
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&q=80" alt="Estilo 2">
+                <div class="gallery-item">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Precisión">
+                    </div>
+                    <p class="item-desc">TEXTURIZED FADE <span>/ PRECISION</span></p>
+                </div>
+                <div class="gallery-item">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Estilo Clásico">
+                    </div>
+                    <p class="item-desc">MINIMAL SLICK BACK <span>/ URBAN</span></p>
                 </div>
             </div>
         </section>
 
-        <section class="section-peek">
-            <h2 class="section-title">RESERVA</h2>
-            <form id="form-peek">
-                <div class="input-container">
-                    <input type="text" id="nombre" placeholder="NOMBRE COMPLETO" required>
-                </div>
-                
-                <div class="input-container">
-                    <input type="tel" id="whatsapp" placeholder="WHATSAPP (NÚMERO)" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+        <section class="booking-section">
+            <h2 class="section-label">RESERVAR TURNO ONLINE</h2>
+            
+            <form id="whatsapp-form">
+                <div class="input-field">
+                    <input type="text" id="form-name" placeholder="NOMBRE Y APELLIDO" required>
                 </div>
 
-                <div class="input-container">
-                    <select id="servicio" required>
-                        <option value="" disabled selected>CARGANDO SERVICIOS...</option>
+                <div class="input-field">
+                    <select id="form-service" required>
+                        <option value="" disabled selected>SELECCIONAR SERVICIO</option>
+                        <option value="Corte Studio & Styling">CORTE STUDIO & STYLING — $8.500</option>
+                        <option value="Barba Ritual & Hot Towel">BARBA RITUAL & HOT TOWEL — $5.000</option>
+                        <option value="Combo Premium Studio">COMBO PREMIUM STUDIO — $12.000</option>
                     </select>
                 </div>
 
-                <div class="grid-inputs">
-                    <div class="input-container">
-                        <input type="date" id="fecha" required>
+                <div class="form-row">
+                    <div class="input-field">
+                        <input type="date" id="form-date" required>
                     </div>
-                    <div class="input-container">
-                        <select id="hora" required>
+                    <div class="input-field">
+                        <select id="form-time" required>
                             <option value="" disabled selected>HORA</option>
                             <option value="09:00 hs">09:00 hs</option>
                             <option value="10:00 hs">10:00 hs</option>
@@ -62,24 +94,39 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-peek">CONFIRMAR TURNO</button>
+                <button type="submit" class="btn-submit">
+                    ENVIAR RESERVA POR WHATSAPP <i class="fa-brand fa-whatsapp"></i>
+                </button>
             </form>
         </section>
 
-        <section class="section-peek no-border">
-            <h2 class="section-title">INFO</h2>
-            <div class="info-box">
-                <p>Marcial Candioti 3200, Santa Fe</p>
-                <p class="hours">Mar a Sáb: 09:00 — 20:00 hs</p>
+        <section class="location-section">
+            <h2 class="section-label">ESTUDIO / UBICACIÓN</h2>
+            
+            <div class="location-details">
+                <div class="address-box">
+                    <p class="main-address">Marcial Candioti 3200</p>
+                    <p class="city-address">Santa Fe Capital, Argentina</p>
+                    <p class="work-hours">Martes a Sábados: 09:00 — 20:00 hs</p>
+                </div>
+                
+                <div class="social-box">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="instagram-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
             </div>
-            <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108709.60100788624!2d-60.77196016629988!3d-31.62569502759902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9adc40888e1%3A0x7d11f161f653a152!2sSanta%20Fe%2C%20Provincia%20de%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1715000000000!5m2!1ses-419!2sar" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!1s0x95b5a9bc6dfcb207%3A0xc3f5117409f98a28!2sMarcial+Candioti+3200%2C+S3000+Santa+Fe!5e0!3m2!1ses-419!2sar!4v1710000000000" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
 
         <footer>
-            <p>© 2026 HAIR STUDIO. DIGITAL SYSTEM BY LUCASM.</p>
+            <p>© 2026 BARBERÍA DEMO. TODOS LOS DERECHOS RESERVADOS.</p>
+            <p class="dev-tag">DIGITAL ARCHITECTURE BY LUCASM</p>
         </footer>
+
     </div>
 
     <script src="script.js"></script>
