@@ -1,84 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", function () {
     
-    // =========================================================
-    // 1. CONEXIÓN A GOOGLE SHEETS PARA LOS PRECIOS
-    // =========================================================
-    
-    // Aquí irá el link de TU Google Sheet publicado como CSV. 
-    // Por ahora uso un enlace vacío de ejemplo.
-    const googleSheetCSV = "TU_ENLACE_AQUI_CUANDO_LO_TENGAS";
-    const selectServicio = document.getElementById('servicio');
-
-    // Datos de respaldo por si el Excel falla o aún no está configurado
-    const serviciosDeRespaldo = [
-        { nombre: "Corte Clásico", precio: "8.000" },
-        { nombre: "Corte y Barba", precio: "12.000" },
-        { nombre: "Perfilado", precio: "4.000" }
-    ];
-
-    function cargarServicios(datos) {
-        selectServicio.innerHTML = '<option value="" disabled selected>Seleccioná un servicio</option>';
-        datos.forEach(item => {
-            const option = document.createElement('option');
-            // El valor y el texto que verá el cliente
-            option.value = item.nombre + " - $" + item.precio;
-            option.textContent = item.nombre + " - $" + item.precio;
-            selectServicio.appendChild(option);
-        });
+    // 1. RELOJ DINÁMICO (ESTILO TOKIO)
+    function updateClock() {
+        const now = new Date();
+        
+        // Formatear Hora
+        let hours = String(now.getHours()).padStart(2, '0');
+        let minutes = String(now.getMinutes()).padStart(2, '0');
+        let seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+        
+        // Actualizar Día y Mes por si cambia de jornada
+        document.getElementById('current-day').textContent = String(now.getDate()).padStart(2, '0');
+        
+        const meses = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+        document.getElementById('current-month').textContent = meses[now.getMonth()];
     }
+    setInterval(updateClock, 1000);
+    updateClock(); // Carga inicial
 
-    // Intentamos cargar desde el Excel
-    fetch(googleSheetCSV)
-        .then(response => {
-            if (!response.ok) throw new Error("Falla al conectar con el Excel");
-            return response.text();
-        })
-        .then(csvText => {
-            // Convertimos el CSV a una lista de opciones
-            const filas = csvText.split('\n').slice(1); // Ignoramos la cabecera
-            const serviciosDesdeExcel = filas.map(fila => {
-                const columnas = fila.split(',');
-                return { nombre: columnas[0], precio: columnas[1] };
-            }).filter(item => item.nombre && item.precio);
-            
-            cargarServicios(serviciosDesdeExcel);
-        })
-        .catch(error => {
-            // Si hay error (o el link no está puesto), usamos los de respaldo
-            console.log("Cargando precios por defecto...");
-            cargarServicios(serviciosDeRespaldo);
-        });
+    // 2. DESPLEGABLE DE CORTES DE PELO (ANIMACIÓN)
+    const btnToggle = document.getElementById('btn-toggle-gallery');
+    const galleryTarget = document.getElementById('gallery-target');
 
-    // =========================================================
-    // 2. ENVÍO DE RESERVA LÍMPIA A WHATSAPP
-    // =========================================================
+    btnToggle.addEventListener('click', function () {
+        btnToggle.classList.toggle('active');
+        galleryTarget.classList.toggle('hidden');
+    });
+
+    // 3. ENVÍO DE RESERVA INTELIGENTE A WHATSAPP
+    const form = document.getElementById('whatsapp-form');
     
-    document.getElementById('form-reserva').addEventListener('submit', function(e) {
-        e.preventDefault();
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita que se recargue la web
 
-        const nombre = document.getElementById('nombre').value;
-        const whatsapp = document.getElementById('whatsapp').value;
-        const servicio = document.getElementById('servicio').value;
-        const fechaInput = document.getElementById('fecha').value;
-        const hora = document.getElementById('hora').value;
+        // Tu número de WhatsApp comercial (Reemplazar con el número real del local)
+        const telefonoBarberia = "543425555555"; 
 
-        // Formatear fecha
-        const partes = fechaInput.split('-');
-        const fechaFinal = partes[2] + "/" + partes[1] + "/" + partes[0];
+        // Captura de datos del formulario
+        const nombre = document.getElementById('form-name').value.toUpperCase();
+        const servicio = document.getElementById('form-service').value;
+        const fechaInput = document.getElementById('form-date').value;
+        const hora = document.getElementById('form-time').value;
 
-        // Teléfono del cliente (el tuyo para la demo)
-        const telLocal = "5493424231853";
+        // Formatear fecha legible (DD/MM/AAAA)
+        const partesFecha = fechaInput.split('-');
+        const fechaFormateada = `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}`;
 
-        // Texto hiper limpio
-        const mensaje = "NUEVA RESERVA PREMIUM\n\n" +
-                        "Cliente: " + nombre + "\n" +
-                        "Tel: " + whatsapp + "\n" +
-                        "Servicio: " + servicio + "\n" +
-                        "Fecha: " + fechaFinal + "\n" +
-                        "Hora: " + hora + "\n\n" +
-                        "Por favor confirmar disponibilidad.";
+        // Construcción del mensaje elegante
+        const mensajeText = `Hola Barbería Demo, me gustaría reservar un turno:\n\n` +
+                            `• *Cliente:* ${nombre}\n` +
+                            `• *Servicio:* ${servicio}\n` +
+                            `• *Fecha:* ${fechaFormateada}\n` +
+                            `• *Hora:* ${hora}\n\n` +
+                            `_Enviado desde el Sitio Premium._`;
 
-        const url = "https://wa.me/" + telLocal + "?text=" + encodeURIComponent(mensaje);
-        window.open(url, '_blank');
+        // Codificación para URL y redirección limpia
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${telefonoBarberia}&text=${encodeURIComponent(mensajeText)}`;
+        
+        window.open(urlWhatsApp, '_blank');
     });
 });
