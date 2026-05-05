@@ -1,159 +1,328 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
-
+/* RESETEO GENERAL */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1px;
 }
 
 body {
-    background-color: #ffffff; /* PEEK-A-BOO usa fondos blancos puros radiantes */
+    background-color: #ffffff; /* Blanco editorial puro */
     color: #111111;
-    padding: 0 15px;
+    overflow-x: hidden;
 }
 
 .peek-container {
-    max-width: 450px;
+    max-width: 480px; /* Perfecto para pantallas móviles */
     margin: 0 auto;
-    padding-top: 40px;
+    padding: 0 20px;
 }
 
-/* HEADER */
-header {
-    text-align: center;
-    padding: 20px 0 40px 0;
+/* Encabezado y Separadores de Línea 1px (Fino) */
+section {
+    padding: 40px 0;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.brand-box h1 {
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 4px;
-}
-
-.brand-sub {
-    font-size: 9px;
-    color: #777;
-    margin-top: 6px;
-    letter-spacing: 3px;
-}
-
-/* SECCIONES ESTILO JAPÓN */
-.section-peek {
-    padding: 35px 0;
-    border-bottom: 1px solid #eaeaea; /* Líneas divisorias delgadas de 1px */
-}
-
-.no-border {
-    border: none;
-}
-
-.section-title {
-    font-size: 11px;
+.section-label {
+    font-size: 10px;
     font-weight: 500;
-    color: #999;
-    margin-bottom: 25px;
+    color: #999999;
     letter-spacing: 3px;
+    margin-bottom: 30px;
     text-transform: uppercase;
 }
 
-/* GALERÍA EN FILA */
-.gallery-layout {
+/* HERO SECTION (CAPTURA 1) */
+.hero-section {
+    padding: 40px 0 50px 0;
+    border-bottom: 1px solid #111111;
     display: flex;
-    gap: 12px;
+    flex-direction: column;
+    min-height: 85vh;
+    justify-content: space-between;
 }
 
-.img-wrapper {
-    flex: 1;
-    height: 280px;
+.hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.brand-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    display: block;
+}
+
+.brand-sub {
+    font-size: 8px;
+    color: #888888;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Recuadro de Fecha Interactiva */
+.date-box {
+    border: 1px solid #111111;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+.date-month {
+    font-size: 9px;
+    font-weight: 500;
+    display: block;
+    letter-spacing: 2px;
+}
+
+.date-day {
+    font-size: 26px;
+    font-weight: 200;
+    display: block;
+    line-height: 1.1;
+    margin: 2px 0;
+}
+
+.date-time {
+    font-size: 8px;
+    color: #666666;
+    display: block;
+}
+
+.hero-bottom {
+    margin-top: auto;
+}
+
+.collection-tag {
+    font-size: 11px;
+    color: #a3927e; /* Tono lino dorado muy elegante */
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hero-main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 35px;
+    font-style: italic;
+}
+
+/* BOTÓN ANIMADO "CORTES DE PELO" */
+.btn-trigger {
+    background: transparent;
+    border: 1px solid #111111;
+    color: #111111;
+    padding: 16px 30px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-trigger i {
+    transition: transform 0.4s ease;
+}
+
+.btn-trigger:hover {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.btn-trigger.active i {
+    transform: rotate(180deg);
+}
+
+/* GALERÍA DESPLEGABLE CON ANIMACIÓN */
+.gallery-section {
+    max-height: 1500px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, padding 0.6s ease;
+}
+
+.gallery-section.hidden {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.gallery-item {
+    width: 100%;
+}
+
+.img-frame {
+    width: 100%;
+    height: 380px;
     overflow: hidden;
     background-color: #f7f7f7;
 }
 
-.img-wrapper img {
+.img-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    filter: grayscale(15%);
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.img-wrapper img:hover {
-    transform: scale(1.03);
+.gallery-item:hover .img-frame img {
+    transform: scale(1.04);
 }
 
-/* FORMULARIO DE LÍNEAS FINAS */
-.input-container {
-    margin-bottom: 20px;
+.item-desc {
+    font-size: 11px;
+    margin-top: 12px;
+    font-weight: 400;
+}
+
+.item-desc span {
+    color: #999999;
+}
+
+/* FORMULARIO ESTILO MODERNO */
+.input-field {
+    margin-bottom: 25px;
 }
 
 input, select {
     width: 100%;
-    padding: 12px 0;
+    padding: 14px 0;
     border: none;
-    border-bottom: 1px solid #ccc; /* Solo línea inferior */
+    border-bottom: 1px solid #cccccc;
     background: transparent;
     border-radius: 0;
     font-size: 13px;
-    color: #111;
+    color: #111111;
     outline: none;
-    transition: border-color 0.3s;
-    text-transform: uppercase;
-}
-
-input::placeholder {
-    color: #aaa;
-    font-size: 11px;
+    transition: border-color 0.3s ease;
 }
 
 input:focus, select:focus {
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid #111111;
 }
 
-.grid-inputs {
+.form-row {
     display: flex;
     gap: 20px;
 }
 
-/* BOTÓN TOTALMENTE PLANO */
-.btn-peek {
+.form-row .input-field {
+    flex: 1;
+}
+
+/* BOTÓN CONFIRMAR RESERVA */
+.btn-submit {
     width: 100%;
     padding: 18px;
-    background-color: #111;
-    color: #fff;
+    background-color: #111111;
+    color: #ffffff;
     border: none;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 2px;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-peek:hover {
-    background-color: #444;
+.btn-submit:hover {
+    background-color: #25d366; /* Color WhatsApp al pasar el cursor */
 }
 
-/* INFO & MAPA GREY */
-.info-box {
-    font-size: 13px;
-    margin-bottom: 20px;
-    line-height: 1.8;
+.btn-submit:active {
+    transform: scale(0.98);
 }
 
-.hours {
-    color: #666;
+/* DIRECCIÓN E INSTAGRAM */
+.location-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.map-wrapper {
-    filter: grayscale(100%); /* Efecto estético gris de los mapas en Japón */
-    opacity: 0.8;
+.main-address {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.city-address {
+    font-size: 12px;
+    color: #666666;
+    margin-top: 4px;
+}
+
+.work-hours {
+    font-size: 11px;
+    color: #999999;
+    margin-top: 8px;
+}
+
+/* ÍCONO INSTAGRAM ANIMADO */
+.instagram-icon {
+    color: #111111;
+    font-size: 28px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.instagram-icon:hover {
+    transform: scale(1.18) rotate(5deg);
+    color: #e1306c; /* Color de Instagram corporativo */
+}
+
+/* MAPA PREMIUM (FILTRADO) */
+.map-container {
+    width: 100%;
+    filter: grayscale(100%) contrast(0.9);
+    opacity: 0.85;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.map-container:hover {
+    filter: grayscale(0%) contrast(1);
+    opacity: 1;
 }
 
 /* FOOTER */
 footer {
-    text-align: center;
     padding: 40px 0;
+    text-align: center;
+}
+
+footer p {
     font-size: 9px;
-    color: #bbb;
+    color: #bbbbbb;
+    letter-spacing: 2px;
+}
+
+.dev-tag {
+    margin-top: 6px;
+    color: #dddddd;
 }
