@@ -3,66 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbería Premium | Reservas</title>
+    <title>Studio Premium | Turnos</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="premium-container">
-        <!-- ENCABEZADO -->
+    <div class="peek-container">
         <header>
-            <!-- Puedes poner tu logo original aquí -->
-            <img src="tu-logo.png" alt="Logo Barbería" class="logo">
-            <h1>Barbería Studio</h1>
-            <p class="subtitle">Elegancia y precisión en cada corte</p>
+            <div class="brand-box">
+                <h1>HAIR STUDIO</h1>
+                <p class="brand-sub">DESIGN & PRECISION</p>
+            </div>
         </header>
 
-        <!-- GALERÍA PREMIUM -->
-        <section class="gallery-section">
-            <h2>Nuestros Trabajos</h2>
-            <div class="gallery-grid">
-                <!-- Reemplaza las URLs por fotos de cortes reales -->
-                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80" alt="Corte 1" class="gallery-img">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80" alt="Corte 2" class="gallery-img">
-                <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&q=80" alt="Corte 3" class="gallery-img">
+        <section class="section-peek">
+            <h2 class="section-title">STYLE BOOK</h2>
+            <div class="gallery-layout">
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&q=80" alt="Estilo 1">
+                </div>
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&q=80" alt="Estilo 2">
+                </div>
             </div>
         </section>
 
-        <!-- FORMULARIO DE RESERVA -->
-        <section class="booking-section">
-            <h2>Reservá tu Turno</h2>
-            <form id="form-reserva">
+        <section class="section-peek">
+            <h2 class="section-title">RESERVA</h2>
+            <form id="form-peek">
+                <div class="input-container">
+                    <input type="text" id="nombre" placeholder="NOMBRE COMPLETO" required>
+                </div>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="nombre">Tu Nombre</label>
-                        <input type="text" id="nombre" placeholder="Ej: Luciano" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="whatsapp">Tu WhatsApp</label>
-                        <input type="tel" id="whatsapp" placeholder="Ej: 3424123456" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
-                    </div>
+                <div class="input-container">
+                    <input type="tel" id="whatsapp" placeholder="WHATSAPP (NÚMERO)" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="servicio">Servicio (Precios Actualizados)</label>
+                <div class="input-container">
                     <select id="servicio" required>
-                        <option value="" disabled selected>Cargando servicios...</option>
-                        <!-- Las opciones se cargarán desde Google Sheets con JS -->
+                        <option value="" disabled selected>CARGANDO SERVICIOS...</option>
                     </select>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fecha">Día</label>
+                <div class="grid-inputs">
+                    <div class="input-container">
                         <input type="date" id="fecha" required>
                     </div>
-                    <div class="form-group">
-                        <label for="hora">Hora</label>
+                    <div class="input-container">
                         <select id="hora" required>
-                            <option value="" disabled selected>Elegí un horario</option>
+                            <option value="" disabled selected>HORA</option>
                             <option value="09:00 hs">09:00 hs</option>
                             <option value="10:00 hs">10:00 hs</option>
+                            <option value="11:00 hs">11:00 hs</option>
                             <option value="16:00 hs">16:00 hs</option>
                             <option value="17:00 hs">17:00 hs</option>
                             <option value="18:00 hs">18:00 hs</option>
@@ -70,24 +62,23 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-premium">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#ffffff" d="M12.031 0C5.385 0 0 5.388 0 12.035c0 2.124.553 4.152 1.606 5.962L0 24l6.16-1.613A11.96 11.96 0 0012.03 24c6.646 0 12.031-5.388 12.031-12.035S18.677 0 12.031 0zm0 21.996a9.965 9.965 0 01-5.083-1.39l-.364-.216-3.774.988.995-3.681-.237-.376A9.957 9.957 0 012.031 12.03c0-5.525 4.496-10.021 10.02-10.021s10.021 4.496 10.021 10.021-4.496 10.02-10.02 10.02zM17.53 14.5c-.302-.15-1.785-.88-2.062-.98-.277-.1-.478-.15-.68.15s-.78.98-.957 1.18c-.176.2-.352.225-.654.075-.302-.15-1.274-.47-2.428-1.503-.898-.804-1.505-1.796-1.68-2.098-.176-.302-.018-.465.132-.615.136-.135.302-.35.453-.525.15-.175.2-.3.302-.5.101-.2.05-.375-.025-.525-.075-.15-.68-1.643-.93-2.25-.246-.593-.495-.512-.68-.521-.176-.008-.376-.008-.577-.008s-.527.075-.804.375c-.276.3-1.054 1.03-1.054 2.513 0 1.483 1.08 2.915 1.23 3.115.15.2 2.124 3.243 5.143 4.545.718.31 1.278.495 1.716.634.72.302 1.376.258 1.895.156.58-.113 1.785-.73 2.036-1.434.25-.705.25-1.31.175-1.435-.075-.125-.276-.2-.578-.35z"/></svg>
-                    Confirmar Reserva
-                </button>
+                <button type="submit" class="btn-peek">CONFIRMAR TURNO</button>
             </form>
         </section>
 
-        <!-- MAPA Y UBICACIÓN -->
-        <section class="location-section">
-            <h2>Dónde Encontrarnos</h2>
-            <div class="map-container">
-                <!-- Iframe de Google Maps centrado en Santa Fe Capital -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108709.60100788624!2d-60.77196016629988!3d-31.62569502759902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9adc40888e1%3A0x7d11f161f653a152!2sSanta%20Fe%2C%20Provincia%20de%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1715000000000!5m2!1ses-419!2sar" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <section class="section-peek no-border">
+            <h2 class="section-title">INFO</h2>
+            <div class="info-box">
+                <p>Marcial Candioti 3200, Santa Fe</p>
+                <p class="hours">Mar a Sáb: 09:00 — 20:00 hs</p>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108709.60100788624!2d-60.77196016629988!3d-31.62569502759902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9adc40888e1%3A0x7d11f161f653a152!2sSanta%20Fe%2C%20Provincia%20de%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1715000000000!5m2!1ses-419!2sar" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
 
         <footer>
-            © 2026 Sistema de Reservas Premium. Creado por LucasM.
+            <p>© 2026 HAIR STUDIO. DIGITAL SYSTEM BY LUCASM.</p>
         </footer>
     </div>
 
