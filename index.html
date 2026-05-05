@@ -3,87 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbería Demo - Premium Studio</title>
+    <title>Barbería Demo - Peluquería de Primera</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@200;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="peek-container">
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
         
-        <header class="hero-section">
-            <div class="hero-top">
-                <div class="brand-box">
-                    <span class="brand-title">BARBERÍA DEMO</span>
-                    <span class="brand-sub">ESTUDIO PREMIUM / TOKIO ESTILO</span>
+        <div class="hero-top">
+            <div class="brand-box">
+                <span class="brand-title">BARBERÍA DEMO</span>
+                <span class="brand-sub">PELUQUERÍA DE PRIMERA</span>
+            </div>
+            <div class="date-box">
+                <span class="date-month" id="current-month">MAYO</span>
+                <span class="date-day" id="current-day">05</span>
+                <span class="date-week" id="current-week">MARTES</span>
+                <span class="date-time" id="current-time">00:00:00</span>
+            </div>
+        </div>
+
+        <div class="hero-bottom">
+            <span class="collection-tag">COLECCIÓN ANUAL 2026</span>
+            <h1 class="hero-main-title">Cortes y experiencias de calidad</h1>
+            <button type="button" class="btn-trigger" id="btn-toggle-gallery">
+                <span>CORTES DE PELO</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="gallery-section hidden" id="gallery-target">
+        <div class="global-wrapper">
+            <h2 class="section-label">CATÁLOGO DE AUTOR / TARIFAS</h2>
+            
+            <div class="collage-container">
+                <div class="collage-item item-large">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80" alt="Corte Low Fade">
+                        <div class="price-tag">$10.000</div>
+                    </div>
+                    <p class="item-desc">TEXTURIZED LOW FADE <span class="tag-type">/ URBANO</span></p>
                 </div>
-                <div class="date-box">
-                    <span class="date-month" id="current-month">MAYO</span>
-                    <span class="date-day" id="current-day">05</span>
-                    <span class="date-time" id="current-time">17:33:40</span>
+
+                <div class="collage-center-column">
+                    <div class="collage-item item-medium">
+                        <div class="img-frame">
+                            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Clásico">
+                            <div class="price-tag">$8.500</div>
+                        </div>
+                        <p class="item-desc">MINIMAL SLICK BACK <span class="tag-type">/ CLÁSICO</span></p>
+                    </div>
+                    
+                    <div class="collage-item item-medium">
+                        <div class="img-frame">
+                            <img src="https://images.unsplash.com/photo-1605497746444-ac9da58d440f?w=600&q=80" alt="Corte Mullet">
+                            <div class="price-tag">$11.000</div>
+                        </div>
+                        <p class="item-desc">MODERN WOLF MULLET <span class="tag-type">/ VANGUARDIA</span></p>
+                    </div>
+                </div>
+
+                <div class="collage-item item-large">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Barba y Corte">
+                        <div class="price-tag">$12.000</div>
+                    </div>
+                    <p class="item-desc">COMBO PREMIUM STUDIO <span class="tag-type">/ RITUAL</span></p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="hero-bottom">
-                <span class="collection-tag">PEEK-A-BOO COLLECTION 2026 S/S</span>
-                <h1 class="hero-main-title">Killing me softly...</h1>
-                <button type="button" class="btn-trigger" id="btn-toggle-gallery">
-                    Cortes de Pelo <i class="fa-solid fa-chevron-down"></i>
-                </button>
-            </div>
-        </header>
-
-        <section class="gallery-section hidden" id="gallery-target">
-            <h2 class="section-label">STYLE BOOK 2026 / GALERÍA</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="img-frame">
-                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Corte Moderno">
-                    </div>
-                    <p class="item-desc">MODERN WOLF CUT <span>/ DESIGN</span></p>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-frame">
-                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Precisión">
-                    </div>
-                    <p class="item-desc">TEXTURIZED FADE <span>/ PRECISION</span></p>
-                </div>
-                <div class="gallery-item">
-                    <div class="img-frame">
-                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Estilo Clásico">
-                    </div>
-                    <p class="item-desc">MINIMAL SLICK BACK <span>/ URBAN</span></p>
-                </div>
-            </div>
-        </section>
-
-        <section class="booking-section">
-            <h2 class="section-label">RESERVAR TURNO ONLINE</h2>
+    <section class="booking-section">
+        <div class="global-wrapper max-width-form">
+            <h2 class="section-label text-center">RESERVAR TURNO ONLINE</h2>
             
             <form id="whatsapp-form">
                 <div class="input-field">
-                    <input type="text" id="form-name" placeholder="NOMBRE Y APELLIDO" required>
+                    <label>TU NOMBRE</label>
+                    <input type="text" id="form-name" placeholder="INGRESÁ TU NOMBRE COMPLETO" required>
                 </div>
 
                 <div class="input-field">
+                    <label>SERVICIO</label>
                     <select id="form-service" required>
-                        <option value="" disabled selected>SELECCIONAR SERVICIO</option>
-                        <option value="Corte Studio & Styling">CORTE STUDIO & STYLING — $8.500</option>
-                        <option value="Barba Ritual & Hot Towel">BARBA RITUAL & HOT TOWEL — $5.000</option>
-                        <option value="Combo Premium Studio">COMBO PREMIUM STUDIO — $12.000</option>
+                        <option value="" disabled selected>SELECCIONÁ UN SERVICIO</option>
+                        <option value="Corte de Pelo - $10.000">CORTE DE PELO — $10.000</option>
+                        <option value="Barba Ritual - $5.000">BARBA RITUAL & TOALLA CALIENTE — $5.000</option>
+                        <option value="Combo Premium - $12.000">COMBO PREMIUM (CORTE Y BARBA) — $12.000</option>
                     </select>
                 </div>
 
                 <div class="form-row">
                     <div class="input-field">
+                        <label>DÍA</label>
                         <input type="date" id="form-date" required>
                     </div>
                     <div class="input-field">
+                        <label>HORA</label>
                         <select id="form-time" required>
-                            <option value="" disabled selected>HORA</option>
+                            <option value="" disabled selected>SELECCIONÁ</option>
                             <option value="09:00 hs">09:00 hs</option>
                             <option value="10:00 hs">10:00 hs</option>
                             <option value="11:00 hs">11:00 hs</option>
@@ -95,15 +120,17 @@
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    ENVIAR RESERVA POR WHATSAPP <i class="fa-brand fa-whatsapp"></i>
+                    <i class="fa-brands fa-whatsapp"></i> CONFIRMAR RESERVA
                 </button>
             </form>
-        </section>
+        </div>
+    </section>
 
-        <section class="location-section">
+    <section class="location-section">
+        <div class="global-wrapper">
             <h2 class="section-label">ESTUDIO / UBICACIÓN</h2>
             
-            <div class="location-details">
+            <div class="location-grid">
                 <div class="address-box">
                     <p class="main-address">Marcial Candioti 3200</p>
                     <p class="city-address">Santa Fe Capital, Argentina</p>
@@ -113,21 +140,23 @@
                 <div class="social-box">
                     <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="instagram-icon">
                         <i class="fa-brands fa-instagram"></i>
+                        <span>@barberiademo_</span>
                     </a>
                 </div>
             </div>
 
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!1s0x95b5a9bc6dfcb207%3A0xc3f5117409f98a28!2sMarcial+Candioti+3200%2C+S3000+Santa+Fe!5e0!3m2!1ses-419!2sar!4v1710000000000" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.944686940386!2d-60.69534012347271!3d-31.635398207127116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9bc0523db47%3A0x6739600ca41f237f!2sMarcial%20Candioti%203200%2C%20S3000%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1714900000000!5m2!1ses-419!2sar" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
+    <footer>
+        <div class="global-wrapper footer-content">
             <p>© 2026 BARBERÍA DEMO. TODOS LOS DERECHOS RESERVADOS.</p>
-            <p class="dev-tag">DIGITAL ARCHITECTURE BY LUCASM</p>
-        </footer>
-
-    </div>
+            <p class="dev-tag">SISTEMA DIGITAL CREADO POR LUCASM</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
