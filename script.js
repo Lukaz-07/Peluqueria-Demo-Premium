@@ -36,30 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 3. AUTO-COMPLETADO AL HACER CLIC EN "RESERVAR ESTILO"
-    const bookButtons = document.querySelectorAll('.btn-book-style');
-    const selectService = document.getElementById('form-service');
-    const bookingSection = document.getElementById('reserva-section');
-
-    bookButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Lee el dato del servicio desde el HTML (data-service)
-            const serviceToSelect = this.getAttribute('data-service');
-            
-            // Asigna el valor al select del formulario
-            selectService.value = serviceToSelect;
-            
-            // Hace un scroll suave hacia el formulario para que el cliente siga completando
-            bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            
-            // Un pequeño efecto visual para indicar que se seleccionó
-            selectService.style.borderColor = '#111';
-            setTimeout(() => {
-                selectService.style.borderColor = '#ddd';
-            }, 1000);
-        });
-    });
-
+   
     // 4. ENVÍO DE FORMULARIO A WHATSAPP
     const form = document.getElementById('whatsapp-form');
     
