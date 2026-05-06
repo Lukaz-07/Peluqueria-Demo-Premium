@@ -22,20 +22,45 @@ document.addEventListener("DOMContentLoaded", function () {
     runLiveClock(); 
 
     // 2. DESPLEGABLE DEL CATÁLOGO
+    // DESPLEGABLE DEL CATÁLOGO (Corrección del salto)
     const btnToggle = document.getElementById('btn-toggle-gallery');
     const galleryTarget = document.getElementById('gallery-target');
 
     btnToggle.addEventListener('click', function () {
         btnToggle.classList.toggle('active');
-        galleryTarget.classList.toggle('hidden');
         
-        if(!galleryTarget.classList.contains('hidden')) {
+        if (galleryTarget.classList.contains('hidden')) {
+            // Abrir galería
+            galleryTarget.classList.remove('hidden');
+            
+            // Retrasamos el scroll 300ms para que la animación CSS tome forma física primero
             setTimeout(() => {
                 galleryTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 150);
+            }, 300); 
+        } else {
+            // Cerrar galería
+            galleryTarget.classList.add('hidden');
         }
     });
+// REDIRECCIÓN AUTOMÁTICA AL CLICKEAR IMÁGENES
+    // Selecciona todas las imágenes dentro de la galería
+    const galleryImages = document.querySelectorAll('.img-frame img');
+    const bookingSection = document.getElementById('reserva-section');
 
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            // Desplaza la vista suavemente hacia el formulario
+            bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Opcional: Pequeño destello visual en el formulario para indicar dónde aterrizó
+            const formContainer = document.querySelector('.max-width-form');
+            formContainer.style.opacity = '0.5';
+            setTimeout(() => {
+                formContainer.style.transition = 'opacity 0.5s ease';
+                formContainer.style.opacity = '1';
+            }, 100);
+        });
+    });
    
     // 4. ENVÍO DE FORMULARIO A WHATSAPP
     const form = document.getElementById('whatsapp-form');
