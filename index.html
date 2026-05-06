@@ -6,11 +6,15 @@
     <title>Barbería Demo - Peluquería de Primera</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@200;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <a href="#ubicacion-section" class="floating-pin" aria-label="Ver Ubicación">
+        <i class="fa-solid fa-location-dot"></i>
+    </a>
 
     <header class="hero-section">
         <div class="hero-overlay"></div>
@@ -40,13 +44,16 @@
 
     <section class="gallery-section hidden" id="gallery-target">
         <div class="global-wrapper">
-            <h2 class="section-label">CATÁLOGO DE AUTOR / TARIFAS</h2>
+            <div class="gallery-header">
+                <h2 class="section-label">CATÁLOGO DE AUTOR</h2>
+                <p class="general-price">TARIFA ÚNICA PARA TODOS LOS CORTES: $10.000</p>
+            </div>
             
             <div class="collage-container">
                 <div class="collage-item item-large">
                     <div class="img-frame">
                         <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80" alt="Corte Low Fade">
-                        <div class="price-tag">$10.000</div>
+                        <button class="btn-book-style" data-service="Texturized Low Fade - $10.000">RESERVAR ESTILO</button>
                     </div>
                     <p class="item-desc">TEXTURIZED LOW FADE <span class="tag-type">/ URBANO</span></p>
                 </div>
@@ -55,7 +62,7 @@
                     <div class="collage-item item-medium">
                         <div class="img-frame">
                             <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Corte Clásico">
-                            <div class="price-tag">$8.500</div>
+                            <button class="btn-book-style" data-service="Minimal Slick Back - $10.000">RESERVAR ESTILO</button>
                         </div>
                         <p class="item-desc">MINIMAL SLICK BACK <span class="tag-type">/ CLÁSICO</span></p>
                     </div>
@@ -63,7 +70,7 @@
                     <div class="collage-item item-medium">
                         <div class="img-frame">
                             <img src="https://images.unsplash.com/photo-1605497746444-ac9da58d440f?w=600&q=80" alt="Corte Mullet">
-                            <div class="price-tag">$11.000</div>
+                            <button class="btn-book-style" data-service="Modern Wolf Mullet - $10.000">RESERVAR ESTILO</button>
                         </div>
                         <p class="item-desc">MODERN WOLF MULLET <span class="tag-type">/ VANGUARDIA</span></p>
                     </div>
@@ -72,15 +79,15 @@
                 <div class="collage-item item-large">
                     <div class="img-frame">
                         <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Barba y Corte">
-                        <div class="price-tag">$12.000</div>
+                        <button class="btn-book-style" data-service="Combo Premium Studio - $15.000">RESERVAR ESTILO</button>
                     </div>
-                    <p class="item-desc">COMBO PREMIUM STUDIO <span class="tag-type">/ RITUAL</span></p>
+                    <p class="item-desc">COMBO PREMIUM (CORTE + BARBA) <span class="tag-type">/ $15.000</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="booking-section">
+    <section class="booking-section" id="reserva-section">
         <div class="global-wrapper max-width-form">
             <h2 class="section-label text-center">RESERVAR TURNO ONLINE</h2>
             
@@ -94,9 +101,10 @@
                     <label>SERVICIO</label>
                     <select id="form-service" required>
                         <option value="" disabled selected>SELECCIONÁ UN SERVICIO</option>
-                        <option value="Corte de Pelo - $10.000">CORTE DE PELO — $10.000</option>
-                        <option value="Barba Ritual - $5.000">BARBA RITUAL & TOALLA CALIENTE — $5.000</option>
-                        <option value="Combo Premium - $12.000">COMBO PREMIUM (CORTE Y BARBA) — $12.000</option>
+                        <option value="Texturized Low Fade - $10.000">TEXTURIZED LOW FADE</option>
+                        <option value="Minimal Slick Back - $10.000">MINIMAL SLICK BACK</option>
+                        <option value="Modern Wolf Mullet - $10.000">MODERN WOLF MULLET</option>
+                        <option value="Combo Premium Studio - $15.000">COMBO PREMIUM STUDIO (Corte + Barba)</option>
                     </select>
                 </div>
 
@@ -126,27 +134,29 @@
         </div>
     </section>
 
-    <section class="location-section">
+    <section class="location-section" id="ubicacion-section">
         <div class="global-wrapper">
             <h2 class="section-label">ESTUDIO / UBICACIÓN</h2>
             
-            <div class="location-grid">
-                <div class="address-box">
-                    <p class="main-address">Marcial Candioti 3200</p>
-                    <p class="city-address">Santa Fe Capital, Argentina</p>
-                    <p class="work-hours">Martes a Sábados: 09:00 — 20:00 hs</p>
+            <div class="contact-card">
+                <div class="contact-header">
+                    <div class="address-box">
+                        <p class="main-address">Marcial Candioti 3200</p>
+                        <p class="city-address">Santa Fe Capital, Argentina</p>
+                        <p class="work-hours">Martes a Sábados: 09:00 — 20:00 hs</p>
+                    </div>
+                    
+                    <div class="social-box">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="instagram-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                            <span>@barberiademo_</span>
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="social-box">
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="instagram-icon">
-                        <i class="fa-brands fa-instagram"></i>
-                        <span>@barberiademo_</span>
-                    </a>
-                </div>
-            </div>
 
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.944686940386!2d-60.69534012347271!3d-31.635398207127116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9bc0523db47%3A0x6739600ca41f237f!2sMarcial%20Candioti%203200%2C%20S3000%20Santa%20Fe!5e0!3m2!1ses-419!2sar!4v1714900000000!5m2!1ses-419!2sar" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.1130383111054!2d-60.6946!3d-31.6315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b5a9be46a3a789%3A0xb3934f8263156cf4!2sMarcial%20Candioti%203200%2C%20S3000%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </section>
